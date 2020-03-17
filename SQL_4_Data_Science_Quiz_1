@@ -1,0 +1,6 @@
+--Q1. Retrieve all the records from the Employees table.
+--select FirstName
+      ,LastName
+      ,Address
+from employees
+where FirstName = 'Robert' and LastName = 'King';
