@@ -58,4 +58,11 @@ UNIONS
       FROM Suppliers
       WHERE Country = 'Germany'
     ORDER BY City;
-  
+SUMMARY
+ *It's really easy to produce results with SQL, but it is not as easy to make sure they are the intended results.
+ *LEFT JOIN: end result should contain just as many records as the original table on the left.
+ *CROSS JOIN: end result should have a number of records equal to the product of the number of records of each table.
+ *Check for duplicates
+ *Check the number of records each time you make a new join
+ *Take the joins one table at a time
+ *Think aout what you are trying to do and map out how you are joining the tables
