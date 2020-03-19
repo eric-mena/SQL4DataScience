@@ -1,0 +1,61 @@
+CARTESIAN PRODUCT
+  *Cartesian (Cross) Join: each rocw from the first table joins with all the rows fo another table.
+  *If Table_X has x entries and Table_Y has y entries, then the resultant table Table_XY of the cross join will have xy entries.
+  *Computationaly burdensome.
+  *Syntax:
+    SELECT product_name, unit_price, company_name
+    FROM suppliers CROSS JOIN products;
+  *Will potentially return misleading results due to taking the product of each row from one table to the other.
+INNER JOINS
+  *Inner Join: selects records that have matching results in both tables.
+  *Syntax:
+    SELECT suppliers.CompanyName, ProductName, UnitPrice
+    FROM Suppliers INNER JOIN Products
+    ON Suppliers.supplierid = Products.supplierid
+  *Pre-qualifying a column (as in specifying from which table the data element comes from) is useful when you may have two tables that
+    may have the same column name.
+  *Tables can also be prequalified, as displayed in the multiple table example that follows.
+  *Syntax (Multiple Tables):
+    SELECT o.OrderID, c.CompanyName, e.LastName
+    FROM ((Orders o INNER JOIN Customers c
+    ON o.CustomerID = c.CustomerID)
+    INNER JOIN Employees e ON o.EmployeeID = e.EmployeeID);
+ALIASES AND SELF JOINS
+  *Aliases: Give a table or column a temporary name.
+SELF JOINS
+  *The following matches customers that are from the same city:
+  *Syntax:
+    SELECT A.CustomerName AS CustomerName1, B.CustomerName AS CustomerName2, A.City 
+    FROM Customers A, Customers B
+    WHERE A.CustomerID = B.CustomerID
+    AND A.City = B.City
+    ORDER BY A.City;
+LEFT JOIN
+  Syntax:
+    SELECT __
+    FROM __
+    LEFT JOIN __ ON __;
+UNIONS
+  *UNION is used to combine the result-set of two or more SELECT statements.
+  *Each SELECT statement within UNION must have the same number of columns.
+  *Columns must have similar data types
+  *The columns in each SELECT statement must be in the same order
+  *Metaphor: Someone is building a floor to a building in one location while someone else builds another floor elsewhere. 
+    the dimensions and layouts of these floors must be identical in order to be pieced together at a later time--that's a UNION.
+  *Columns must be in the same order, data types must be the same.
+  *Syntax:
+    SELECT column(s) 
+    FROM table1
+    UNION
+    SELECT column(s)
+    FROM table2;
+  *Example:
+      SELECT City, Country
+      FROM Customers
+      WHERE Country = 'Germany'
+    UNION
+      SELECT City, Country
+      FROM Suppliers
+      WHERE Country = 'Germany'
+    ORDER BY City;
+  
