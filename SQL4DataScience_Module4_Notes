@@ -1,0 +1,37 @@
+WORKING WITH TEXT STRINGS
+  CONCATENATION
+    *Concatenation is accomplished in SQL by using the pipe [or sometimes called the vertical bar key (|)].
+    *Syntax:
+      SELECT CompanyName, ContactName, CompanyName || '('|| ContactName ||')'
+      FROM customers
+    *CONCAT can also be used, but this function only works with a maximum of 2 inputs at a time, and to
+      achieve 3 or more concatenated inputs would require a series of nested CONCAT functions.
+  TRIMMING STRINGS
+    *Functions: TRIM, RTRIM, LTRIM
+    *Syntax:
+      SELECT TRIM("    You the best.      ") AS TrimmedString
+  SUBSTRING
+    *Syntax:
+      SUBSTR(StringName, StringPpoition, numberOfCharactersToBeReturned);
+    *If the number of characters to be returned exceeds the number of characters in the string,
+      SQLite will return the number of characters in the string.
+  UPPER AND LOWER CASE
+    *All 3 of these functions will change the entire string to upper/lower case
+    *UPPER and UCASE both do the same thing.
+    *Syntax:
+      SELECT UPPER(column_name)
+      FROM table_name;
+    *Syntax:
+      SELECT LOWER(column_name)
+      FROM table_name;
+    *Syntax:
+      SELECT UCASE(column_name)
+      FROM table_name;
+WORKING WITH DATE AND TIME STRINGS EXAMPLES
+
+DATE AND TIME STRINGS EXAMPLES
+CASE STATEMENTS
+  *Case statements are SQL's version of IF,THEN clauses.
+VIEWS
+DATA GOVERNANCE AND PROFILING
+USING SQL FOR DATA SCIENCE
