@@ -28,10 +28,50 @@ WORKING WITH TEXT STRINGS
       SELECT UCASE(column_name)
       FROM table_name;
 WORKING WITH DATE AND TIME STRINGS EXAMPLES
-
+  *Dates are usually very difficult to work with due to the lack of uniformity around data entry.
+  *As long as your data contains only the date portion, your queries will work as expected. However,
+    if a time portion is involved, it gets more complicated.
+  *The most difficult part when working with dates is to be sure that the format of the date you are
+    trying to insert matches the format of the date column in the database.
+  *WHERE Date = '2016-02-02' woill return no results because this format is shared by all date and time string types.
+  *SQLite date and time functions:
+    *DATE(timestring,modifier,modifier,...)
+    *TIME(timestring,modifier,modifier,...)
+    *DATETIME(timestring,modifier,modifier,...)
+    *JULIANDAY(timestring,modifier,modifier,...)
+    *STRFTIME(timestring,modifier,modifier,...)
 DATE AND TIME STRINGS EXAMPLES
+  STRFTIME
+    *STRFTIME = String format timee
+    Syntax:
+      SELECT Birthdate, STRFTIME('%Y', Birthdate) AS Year, STRFTIME('%m', Birthdate) AS Month, STRFTIME('%d', Birthdate) AS Day
+      FROM employees
+    *The previous example considers  Birthdate, which houses a date and time format (YYYY-MM-DD HH:MM:SS) and creates new columns
+      along side it with Year, Month, and Day.
+  DATE
+    *Syntax:
+      SELECT DATE('now')
+    *This will return today's date.
+    *Example:
+      SELECT Birthdate, STRFTIME('%Y', Birthdate) AS Year, STRFTIME('%m', Birthdate) AS Month, STRFTIME('%d', Birthdate) AS Day, DATE(('now') - Birthdate) AS Age
+      FROM employees
+    *The previous example wil return Year, Month, Day, and Age columns.
 CASE STATEMENTS
   *Case statements are SQL's version of IF,THEN clauses.
+  *Can be used in SELECT, INSERT, UPDATE, and DELETE statements
+  *Syntax: 
+    CASE
+    WHEN C1 THEN E1
+    WHEN C2 THEN E2
+    ...
+    ELSE [result else]
+    END
+  *Syntax:
+    CASE input_expression
+      WHEN when_expression THEN result_expression [...]
+      [ ELSE else_result_expression ]
+    END
+  *
 VIEWS
 DATA GOVERNANCE AND PROFILING
 USING SQL FOR DATA SCIENCE
